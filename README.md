@@ -33,6 +33,10 @@ Let's create the `stargazer` frame which has user IDs of stargazers as its rows:
 $ curl -XPOST localhost:10101/frame -d '{"db": "project", "frame": "stargazer", "options": {"rowLabel": "stargazer_id"}}'
 ```
 
+Since our data contains time stamps for the time users starred repos, we will change the *time quantum* for the `stargazer` frame. Time quantum is the resolution of the time we want to use. We will set it to `YMD` (year, month, day) for `stargazer`:
+```
+$ curl -XPATCH localhost:10101/frame/time_quantum -d '{"db": "project", "frame": "stargazer", "time_quantum": "YMD"}'
+
 Next up is the `language` frame, which will contain IDs for programming languages:
 ```
 $ curl -XPOST localhost:10101/frame -d '{"db": "project", "frame": "language", "options": {"rowLabel": "language_id"}}'
@@ -51,7 +55,7 @@ $ pilosa import -d project -f language project-language.csv
 If you are using a Docker container for Pilosa (with name `pilosa`), you should instead copy the `*.csv` file into the container and then import them:
 ```
 $ docker cp project-stargazer.csv pilosa:/project-stargazer.csv
-$ docker exec -it pilosa pilosa import -d project -f stargazer /project-stargazer.csv pilosa
+$ docker exec -it pilosa pilosa import -d project -f stargazer /project-stargazer.csv
 $ docker cp project-language.csv pilosa:/project-language.csv
 $ docker exec -it pilosa pilosa import -d project -f language /project-language.csv
 ```
