@@ -1,6 +1,19 @@
 # Getting Started
 
-## Schema
+## Usage
+
+```
+pip install -r requirements.txt
+python fetch.py
+```
+
+### Sample Project
+
+In order to get a glance of the capabilities of Pilosa, we will write a sample project called "Star Trace". The database for the project will contain information about most recently updated 1000 Github projects which have "Austin" in their names, including stargazers, programming languages used and tags. People who have starred a project are called that project's stargazers.
+
+Although Pilosa doesn't keep the data in a tabular format, we will still use "columns" and "rows" when we talk about organizing our data. A common convention is putting the main focus (or subject) of a database in the columns, and properties of the subject in the rows. For instance, the columns of the "project" database would contain project IDs and the programming language(s) used for that project would be placed in the rows of the "language" *frame*.
+
+#### Schema
 
 ```
 project
@@ -12,12 +25,6 @@ project
 	frame: language (C, Go, Java, Python, etc.)
 		row: language_id
 ```
-
-### Sample Project
-
-In order to get a glance of the capabilities of Pilosa, we will write a sample project called "Star Trace". The database for the project will contain information about most recently updated 1000 Github projects which have "Austin" in their names, including stargazers, programming languages used and tags. People who have starred a project are called that project's stargazers.
-
-Although Pilosa doesn't keep the data in a tabular format, we will still use "columns" and "rows" when we talk about organizing our data. A common convention is putting the main focus (or subject) of a database in the columns, and properties of the subject in the rows. For instance, the columns of the "project" database would contain project IDs and the programming language(s) used for that project would be placed in the rows of the "language" *frame*.
 
 #### Create the Schema
 
