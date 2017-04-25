@@ -1,87 +1,62 @@
-Clojure
-Python
-Inno Setup
-C
-Batchfile
-JavaScript
-GLSL
-Makefile
-C#
-Roff
-C++
-Gherkin
-Ruby
-CSS
-HTML
-Java
+Protocol Buffer
 Shell
-CMake
-Objective-C
-PHP
-Scala
-SourcePawn
-Matlab
-Emacs Lisp
-Perl
-Elixir
-R
-Pascal
-Erlang
-Lua
-Groovy
-CoffeeScript
-Nginx
-ASP
-TypeScript
-Assembly
-Standard ML
-OCaml
-Swift
-ApacheConf
-Game Maker Language
-Jupyter Notebook
-HCL
-Groff
-TeX
-Haskell
-Go
-Mathematica
-LabVIEW
-Arduino
-Perl6
 PowerShell
-Gosu
-EmberScript
-VimL
-Handlebars
-DIGITAL Command Language
-Common Lisp
-F#
-XSLT
-Objective-C++
-OpenSCAD
-Processing
-PLpgSQL
-PLSQL
-OpenEdge ABL
-Bison
-PostScript
-GDB
-Lex
-Yacc
-QMake
-Redcode
-Cuda
+Vim script
+Makefile
+Go
+Assembly
+C
 Fortran
-Puppet
-BlitzBasic
-Max
-Coq
-Verilog
-Liquid
-Vue
-ActionScript
-Io
-Dylan
-D
+HTML
+C++
+Logos
+CSS
+JavaScript
+Awk
+Batchfile
+Perl
+Python
+SaltStack
+Nginx
+Objective-C
+Java
+Ruby
+Roff
+CoffeeScript
+PAWN
+SourcePawn
+C#
+Smarty
+Tcl
+ASP
+Cuda
+PHP
+Dart
 Scheme
+Emacs Lisp
+Lua
+XSLT
+Groovy
+Swift
+POV-Ray SDL
+Yacc
+PLpgSQL
+VimL
+Groff
+M4
+Perl6
+QMake
+Objective-C++
+ApacheConf
+Visual Basic
+OpenEdge ABL
+R
+Clean
+AMPL
+Lex
+Elixir
+TeX
+TypeScript
+GDB
+GAP
+Gnuplot
