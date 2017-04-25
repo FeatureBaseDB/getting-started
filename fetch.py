@@ -27,17 +27,28 @@ class StarTrace:
             for i, repo in enumerate(search):
                 print(i, repo.id)
                 project_id = self.add_or_get_project(repo.id)
-                for lang in repo.get_languages().keys():
-                    language_frame.write("{lang_id},{project_id}\n".format(
-                        lang_id=self.add_or_get_language(lang),
-                        project_id=project_id
-                    ))
-                for stargazer in repo.get_stargazers_with_dates():
-                    stargazer_frame.write("{stargazer_id},{project_id},{starred_at}\n".format(
-                        stargazer_id=self.add_or_get_stargazer(stargazer.user.id),
-                        project_id=project_id,
-                        starred_at=stargazer.starred_at.strftime("%Y-%m-%dT%H:%S")
-                    ))
+                try:
+                    for lang in repo.get_languages().keys():
+                        language_frame.write("{lang_id},{project_id}\n".format(
+                            lang_id=self.add_or_get_language(lang),
+                            project_id=project_id
+                        ))
+                except Exception as e:
+                    # ignore any rate-limiting issues and just keep processing
+                    # TODO narrow down possible exceptions
+                    print(e)
+                try:
+                    for stargazer in repo.get_stargazers_with_dates():
+                        stargazer_frame.write("{stargazer_id},{project_id},{starred_at}\n".format(
+                            stargazer_id=self.add_or_get_stargazer(stargazer.user.id),
+                            project_id=project_id,
+                            starred_at=stargazer.starred_at.strftime("%Y-%m-%dT%H:%S")
+                        ))
+                except Exception as e:
+                    # ignore any rate-limiting issues and just keep processing
+                    # TODO narrow down possible exceptions
+                    print(e)
+
         finally:
             stargazer_frame.close()
             language_frame.close()
@@ -71,7 +82,7 @@ def main():
     else:
         token = None
     st = StarTrace(token=token)
-    st.search("Austin")
+    st.search("go")
 
 if __name__ == '__main__':
     main()
