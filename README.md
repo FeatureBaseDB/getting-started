@@ -14,9 +14,9 @@ The sample dataset contains stargazer and language data for Github projects whic
 
 ## Usage
 
-1. Pilosa server should be running: [Starting Pilosa]((https://www.pilosa.com/docs/getting-started/#starting-pilosa)
-2. The appropriate schema should be initialized: [Create the Schema]((https://www.pilosa.com/docs/getting-started/#create-the-schema)
-3. Finally, the data can be imported: [Import Some Data]((https://www.pilosa.com/docs/getting-started/#import-some-data)
+1. Pilosa server should be running: [Starting Pilosa](https://www.pilosa.com/docs/getting-started/#starting-pilosa)
+2. The appropriate schema should be initialized: [Create the Schema](https://www.pilosa.com/docs/getting-started/#create-the-schema)
+3. Finally, the data can be imported: [Import Some Data](https://www.pilosa.com/docs/getting-started/#import-some-data)
 
 ## Generating the Dataset
 
