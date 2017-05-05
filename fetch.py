@@ -1,5 +1,6 @@
 
 import os
+import sys
 from github import Github
 
 TIME_FORMAT = "%Y-%m-%dT%H:%S"
@@ -18,8 +19,8 @@ class StarTrace:
         self.e2l = {}
 
     def search(self, query):
-        stargazer_frame = open(self.get_path("project-stargazer.csv"), "w")
-        language_frame = open(self.get_path("project-language.csv"), "w")
+        stargazer_frame = open(self.get_path("stargazer.csv"), "w")
+        language_frame = open(self.get_path("language.csv"), "w")
 
         try:
             gh = Github(self.token)
@@ -77,12 +78,18 @@ class StarTrace:
         return id
 
 def main():
+    if len(sys.argv) != 2:
+        print("Usage: python fetch.py keyword", file=sys.stderr)
+        sys.exit(1)
+
     if os.path.exists("token"):
         token = open("token").read().strip()
+        print("Found the Github API token")
     else:
         token = None
+        print("WARNING: No Github API token was found")
     st = StarTrace(token=token)
-    st.search("go")
+    st.search(sys.argv[1])
 
 if __name__ == '__main__':
     main()
