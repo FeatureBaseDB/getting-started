@@ -1,85 +1,69 @@
-Shell
-Assembly
-Protocol Buffer
-Go
-PowerShell
-Vim script
-C
-Makefile
-JavaScript
-Batchfile
-C++
-Fortran
 CSS
 HTML
-Python
-Logos
-Awk
-Perl
-Ruby
-SaltStack
-Nginx
+JavaScript
 TypeScript
-Smarty
-Groovy
-PHP
-Gherkin
-Ragel
-PLpgSQL
-SQLPL
-Matlab
-Cuda
-Jupyter Notebook
-Java
-R
-Scala
-CMake
-Perl6
-Tcl
-HCL
-Yacc
-NewLisp
-Objective-C
-Objective-C++
-M4
-Clojure
-CoffeeScript
-Rust
-Roff
-Lua
-Visual Basic
-NSIS
-Inno Setup
-Lex
+C
 ApacheConf
-Thrift
-GLSL
-Emacs Lisp
-QMake
-Prolog
-D
-FreeMarker
-XSLT
-PLSQL
-DTrace
-PureBasic
-DIGITAL Command Language
+Makefile
+CoffeeScript
+Java
+Smarty
+Shell
+PHP
+Ruby
 Swift
+Objective-C
+ActionScript
+Go
+Vim script
+Vue
+Python
+GLSL
+C++
+CMake
+Batchfile
+ASP
+C#
+PowerShell
+PLSQL
+RAML
+Clojure
+Groff
+Emacs Lisp
+Elm
+Scala
+Perl
+R
+Nginx
+Dart
+Groovy
+Objective-C++
+GAP
+Yacc
+M4
+Awk
+Lex
+DTrace
+XSLT
 QML
 AppleScript
-Ragel in Ruby Host
-API Blueprint
-Handlebars
-Racket
-ASP
-Common Lisp
-Haskell
-Brainfuck
+Logos
+Inno Setup
+TeX
+Roff
+Mask
+Puppet
+Erlang
+Protocol Buffer
+Assembly
+Perl6
+Gherkin
+Rebol
+Cucumber
+GCC Machine Description
+Pascal
 Arduino
-C#
-KiCad
-Julia
-OCaml
-JSONiq
-Dart
-Crystal
+Smalltalk
+PogoScript
+Kotlin
+Handlebars
