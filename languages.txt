@@ -1,62 +1,85 @@
-Protocol Buffer
 Shell
+Assembly
+Protocol Buffer
+Go
 PowerShell
 Vim script
-Makefile
-Go
-Assembly
 C
-Fortran
-HTML
-C++
-Logos
-CSS
+Makefile
 JavaScript
-Awk
 Batchfile
-Perl
+C++
+Fortran
+CSS
+HTML
 Python
+Logos
+Awk
+Perl
+Ruby
 SaltStack
 Nginx
-Objective-C
-Java
-Ruby
-Roff
-CoffeeScript
-PAWN
-SourcePawn
-C#
-Smarty
-Tcl
-ASP
-Cuda
-PHP
-Dart
-Scheme
-Emacs Lisp
-Lua
-XSLT
-Groovy
-Swift
-POV-Ray SDL
-Yacc
-PLpgSQL
-VimL
-Groff
-M4
-Perl6
-QMake
-Objective-C++
-ApacheConf
-Visual Basic
-OpenEdge ABL
-R
-Clean
-AMPL
-Lex
-Elixir
-TeX
 TypeScript
-GDB
-GAP
-Gnuplot
+Smarty
+Groovy
+PHP
+Gherkin
+Ragel
+PLpgSQL
+SQLPL
+Matlab
+Cuda
+Jupyter Notebook
+Java
+R
+Scala
+CMake
+Perl6
+Tcl
+HCL
+Yacc
+NewLisp
+Objective-C
+Objective-C++
+M4
+Clojure
+CoffeeScript
+Rust
+Roff
+Lua
+Visual Basic
+NSIS
+Inno Setup
+Lex
+ApacheConf
+Thrift
+GLSL
+Emacs Lisp
+QMake
+Prolog
+D
+FreeMarker
+XSLT
+PLSQL
+DTrace
+PureBasic
+DIGITAL Command Language
+Swift
+QML
+AppleScript
+Ragel in Ruby Host
+API Blueprint
+Handlebars
+Racket
+ASP
+Common Lisp
+Haskell
+Brainfuck
+Arduino
+C#
+KiCad
+Julia
+OCaml
+JSONiq
+Dart
+Crystal
