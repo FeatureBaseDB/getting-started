@@ -17,7 +17,8 @@ This folder contains the sample Star Trace project in Go.
     ```
     go get github.com/pilosa/go-pilosa
     ```
-5. Run `startrace.go`:
+5. Run `startrace.go`. The path to the dataset is required. You can optionally specify the Pilosa server's address:
     ```
-    go run startrace.go
+    go run startrace.go .. :10101
     ```
+
