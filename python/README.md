@@ -1,5 +1,7 @@
 # Star Trace in Python
 
+This folder contains the sample Star Trace project in Python. 
+
 ## Usage
 
 1. Run Pilosa server: [Starting Pilosa](https://www.pilosa.com/docs/getting-started/#starting-pilosa)

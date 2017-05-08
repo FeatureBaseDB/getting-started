@@ -1,6 +1,5 @@
 import sys
 import os
-from datetime import datetime
 
 from pilosa import Client, Index, TimeQuantum
 
@@ -47,16 +46,15 @@ def print_ids(ids):
 def run_queries(client, language_names):
     repository, stargazer, language = get_schema()
 
-    # Who are the top 50 stargazers:
-    top_stargazers = client.query(stargazer.topn(50)).result.count_items
-    stargazer_items = [(item.id, item.count) for item in top_stargazers]
-    print("Top stargazers:")
-    print_topn(stargazer_items)
+    # Which repositories did user 14 star:
+    repository_ids = client.query(stargazer.bitmap(19)).result.bitmap.bits
+    print("User 14 starred:")
+    print_ids(repository_ids)
 
     print()
 
-    # What are the top 10 languages:
-    top_languages = client.query(language.topn(10)).result.count_items
+    # What are the top 5 languages in the sample data:
+    top_languages = client.query(language.topn(14)).result.count_items
     # note that we map language id to language name this time
     language_items = [(language_names[item.id], item.count)
                       for item in top_languages]
@@ -65,27 +63,45 @@ def run_queries(client, language_names):
 
     print()
 
-    # Which repositories were starred by all 10 top stargazers:
-    top10 = [item.id for item in top_stargazers[:10]]
-    top10_bitmaps = [stargazer.bitmap(stargazer_id) for stargazer_id in top10]
-    response = client.query(repository.intersect(*top10_bitmaps))
-    repository_ids = response.result.bitmap.bits
-    print("The following repositories were starred by all of:", ", ".join(str(sid) for sid in top10))
-    print("\t", repository_ids)
+    # Which repositories were starred by both user 14 and 19:
+    query = repository.intersect(
+        stargazer.bitmap(14),
+        stargazer.bitmap(19)
+    )
+    mutually_starred = client.query(query).result.bitmap.bits
+    print("User 14 and 19 starred:")
+    print_ids(mutually_starred)
 
     print()
 
-    # How many repositories did stargazer 10801 star in 2017:
-    start_2017 = datetime(2017, 1, 1)
-    end_2017 = datetime(2018, 1, 1)
-    stargazer_id = 10801
-    query = repository.count(stargazer.range(stargazer_id,
-                                             start=start_2017,
-                                             end=end_2017))
-    repository_count = client.query(query).result.count
-    print("{count} repositories were starred by stargazer {id} in 2017.".format(
-        count=repository_count,
-        id=stargazer_id))
+    # Which repositories were starred by either user 14 or 19:
+    query = repository.union(
+        stargazer.bitmap(14),
+        stargazer.bitmap(19)
+    )
+    either_starred = client.query(query).result.bitmap.bits
+    print("User 14 or 19 starred:")
+    print_ids(either_starred)
+
+    print()
+
+    # Which repositories were starred by user 14 and 19 and also were written in language 1:
+    query = repository.intersect(
+        repository.intersect(
+            stargazer.bitmap(14),
+            stargazer.bitmap(19)
+        ),
+        language.bitmap(1)
+    )
+    mutually_starred = client.query(query).result.bitmap.bits
+    print("User 14 and 19 starred and in language 1:")
+    print_ids(mutually_starred)
+
+    print()
+
+    # Set user 99999 as a stargazer for repository 77777:
+    client.query(stargazer.setbit(99999, 77777))
+    print("Set user 99999 as a stargazer for repository 77777\n")
 
 if __name__ == "__main__":
     main()
