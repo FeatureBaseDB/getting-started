@@ -19,7 +19,7 @@ def get_schema():
 
 def load_language_names(dataset_path):
     with open(os.path.join(dataset_path, "languages.txt")) as f:
-        return dict(enumerate(line.strip() for line in f))
+        return [line.strip() for line in f]
 
 
 def main():
@@ -47,14 +47,14 @@ def run_queries(client, language_names):
     repository, stargazer, language = get_schema()
 
     # Which repositories did user 14 star:
-    repository_ids = client.query(stargazer.bitmap(19)).result.bitmap.bits
+    repository_ids = client.query(stargazer.bitmap(14)).result.bitmap.bits
     print("User 14 starred:")
     print_ids(repository_ids)
 
     print()
 
     # What are the top 5 languages in the sample data:
-    top_languages = client.query(language.topn(14)).result.count_items
+    top_languages = client.query(language.topn(5)).result.count_items
     # note that we map language id to language name this time
     language_items = [(language_names[item.id], item.count)
                       for item in top_languages]
