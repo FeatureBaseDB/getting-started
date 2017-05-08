@@ -16,6 +16,6 @@ This folder contains the sample Star Trace project in Java.
     ```
     mvn -f startrace/pom.xml clean package
     ```
-5. Run the created JAR with the dataset path and Pilosa server address::
+5. Run the created JAR with the dataset path and Pilosa server address:
     ```
     java -jar startrace/target/getting-started-0.3.2.jar .. :10101

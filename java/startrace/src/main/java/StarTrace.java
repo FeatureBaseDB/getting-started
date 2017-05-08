@@ -111,7 +111,7 @@ public class StarTrace {
     private static void printIDs(List<Long> ids) {
         int i = 0;
         for (Long id : ids) {
-            System.out.printf("\t%d. %s\n", ++i, id);
+            System.out.printf("\t%d. %d\n", ++i, id);
         }
     }
 
