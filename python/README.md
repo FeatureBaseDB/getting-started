@@ -13,8 +13,10 @@ This folder contains the sample Star Trace project in Python.
 5. Activate the virtual env:
 	* On Linux, MacOS, other UNIX: `source getting-started/bin/activate`
 	* On Windows: `getting-started\Scripts\activate`
-6. Install requirements: `pip install -r requirements.txt`
-7. Run the script with the dataset path and Pilosa server address:
+6. Clone this repository, or download the [ZIP archive](https://github.com/pilosa/getting-started/archive/master.zip) and uncompress it.
+7. Make sure you are in the `getting-started/python` directory.	
+8. Install requirements: `pip install -r requirements.txt`
+9. Run the script with the dataset path and Pilosa server address:
     ```
     python startrace.py .. :10101
     ```
