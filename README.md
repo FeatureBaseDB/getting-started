@@ -18,6 +18,10 @@ The sample dataset contains stargazer and language data for Github projects whic
 2. The appropriate schema should be initialized: [Create the Schema](https://www.pilosa.com/docs/getting-started/#create-the-schema)
 3. Finally, the data can be imported: [Import Some Data](https://www.pilosa.com/docs/getting-started/#import-some-data)
 
+## Sample Projects
+
+* [Python](https://github.com/pilosa/getting-started/python)
+
 ## Generating the Dataset
 
 `fetch.py` script searches Github for a given keyword, and creates the dataset explained in *The Dataset* section.
