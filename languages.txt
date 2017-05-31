@@ -1,62 +1,69 @@
-Protocol Buffer
-Shell
-PowerShell
-Vim script
-Makefile
-Go
-Assembly
-C
-Fortran
-HTML
-C++
-Logos
 CSS
+HTML
 JavaScript
-Awk
-Batchfile
-Perl
-Python
-SaltStack
-Nginx
-Objective-C
-Java
-Ruby
-Roff
-CoffeeScript
-PAWN
-SourcePawn
-C#
-Smarty
-Tcl
-ASP
-Cuda
-PHP
-Dart
-Scheme
-Emacs Lisp
-Lua
-XSLT
-Groovy
-Swift
-POV-Ray SDL
-Yacc
-PLpgSQL
-VimL
-Groff
-M4
-Perl6
-QMake
-Objective-C++
-ApacheConf
-Visual Basic
-OpenEdge ABL
-R
-Clean
-AMPL
-Lex
-Elixir
-TeX
 TypeScript
-GDB
+C
+ApacheConf
+Makefile
+CoffeeScript
+Java
+Smarty
+Shell
+PHP
+Ruby
+Swift
+Objective-C
+ActionScript
+Go
+Vim script
+Vue
+Python
+GLSL
+C++
+CMake
+Batchfile
+ASP
+C#
+PowerShell
+PLSQL
+RAML
+Clojure
+Groff
+Emacs Lisp
+Elm
+Scala
+Perl
+R
+Nginx
+Dart
+Groovy
+Objective-C++
 GAP
-Gnuplot
+Yacc
+M4
+Awk
+Lex
+DTrace
+XSLT
+QML
+AppleScript
+Logos
+Inno Setup
+TeX
+Roff
+Mask
+Puppet
+Erlang
+Protocol Buffer
+Assembly
+Perl6
+Gherkin
+Rebol
+Cucumber
+GCC Machine Description
+Pascal
+Arduino
+Smalltalk
+PogoScript
+Kotlin
+Handlebars
