@@ -11,8 +11,8 @@ The sample dataset contains stargazer and language data for Github projects whic
 * `language.txt`: Language name to languageID mapping. The line number corresponds to the languageID.
 * `language.csv`: languageID, projectID
 * `stargazer.csv`: stargazerID, projectID, timestamp(starred)
-* `input_definition.txt`: input definition in json format 
-* `json_input.txt`: data in json format with repo_id, language_id, stargazer_id defined in input_defintion.txt
+* `input_definition.json`: input definition in json format 
+* `json_input.json`: data in json format with repo_id, language_id, stargazer_id defined in input_defintion.txt
 ## Usage
 
 1. Pilosa server should be running: [Starting Pilosa](https://www.pilosa.com/docs/getting-started/#starting-pilosa)
@@ -45,14 +45,15 @@ Below are the steps to run commands:
 `fetch.py` script searches Github for a given keyword, and creates the dataset explained in *The Dataset* section.
 
 Run the script: `python fetch.py KEYWORD`
+`KEYWORD` is repository's name for searching
 
 #### To generate input_defintion and json_input files:
 
 `build_definition.py` script build JSON format input-defintion, using `language.txt` to map language string to id
 
-Run the script: `python build_definition.py <input_definition.txt>`
-If `input_definitioon.txt` isn't set, print out JSON input-definition
+Run the script: `python build_definition.py <input_definition.json>`
+If `input_definitioon.json` isn't set, print out JSON input-definition
 
-`build_json_input.json` script searches Github for a given keyword then create json data set to import data that adheres to that `input_definition.txt`
-Run the script: `python build_json_input.py <json_input.txt>`
+`build_json_input.json` script searches Github for a given keyword then create json data set to import data that adheres to that `input_definition.json`
+Run the script: `python build_json_input.py <reository_name>`
 
