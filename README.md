@@ -40,16 +40,19 @@ Below are the steps to run commands:
 4. If you have a Github token, save it as `token` in the root directory of the project.
 
 
-### To generate csv files:
+#### To generate csv files:
 
 `fetch.py` script searches Github for a given keyword, and creates the dataset explained in *The Dataset* section.
 
 Run the script: `python fetch.py KEYWORD`
 
-### To generate input_defintion and json_input files:
+#### To generate input_defintion and json_input files:
 
 `build_definition.py` script build JSON format input-defintion, using `language.txt` to map language string to id
 
-`build_json_input.json` script searches Github for a given keyword then create json data set to import data that adheres to that `input_definition.txt`
+Run the script: `python build_definition.py <input_definition.txt>`
+If `input_definitioon.txt` isn't set, print out JSON input-definition
 
+`build_json_input.json` script searches Github for a given keyword then create json data set to import data that adheres to that `input_definition.txt`
+Run the script: `python build_json_input.py <json_input.txt>`
 
