@@ -1,7 +1,7 @@
-
 import os
 import sys
 from github import Github
+
 
 TIME_FORMAT = "%Y-%m-%dT%H:%S"
 
@@ -79,7 +79,7 @@ class StarTrace:
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python fetch.py keyword", file=sys.stderr)
+        print("Usage: python fetch.py keyword")
         sys.exit(1)
 
     if os.path.exists("token"):
