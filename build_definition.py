@@ -48,6 +48,15 @@ class InputDefinition:
                         "valueDestination": "value-to-row"
                     }
                 ]
+            },
+            {
+                "name": "time_value",
+                "actions": [
+                    {
+                        "frame": "stargazer",
+                        "valueDestination": "set-timestamp"
+                    }
+                ]
             }
         ]
         input_def = json.dumps(definition, indent=4, sort_keys=True)
@@ -65,6 +74,7 @@ class InputDefinition:
         for i, x in enumerate(content):
             store[x.strip()] = i
         return store
+
 
 def main():
     st = InputDefinition()

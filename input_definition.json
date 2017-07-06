@@ -36,6 +36,7 @@
                         "HTML": 9, 
                         "Java": 21, 
                         "JavaScript": 13, 
+                        "Jupyter Notebook": 62, 
                         "Lex": 55, 
                         "Logos": 11, 
                         "Lua": 36, 
@@ -85,6 +86,15 @@
                 }
             ], 
             "name": "stargazer_id"
+        }, 
+        {
+            "actions": [
+                {
+                    "frame": "stargazer", 
+                    "valueDestination": "set-timestamp"
+                }
+            ], 
+            "name": "time_value"
         }
     ], 
     "frames": [

@@ -14,7 +14,7 @@ class StarTrace:
 
     def search(self, query):
         data = []
-        json_input = open(self.get_path("json_input.txt"), "w")
+        json_input = open(self.get_path("json_input.json"), "w")
         gh = Github(self.token)
         search = gh.search_repositories(query, sort='stars')
         for repo in search:
@@ -27,6 +27,7 @@ class StarTrace:
 
             for stargazer in stargazers:
                 field["stargazer_id"] = stargazer.user.id
+                field["time_value"] = stargazer.starred_at.strftime("%Y-%m-%dT%H:%S")
 
             data.append(field)
         input_data = json.dumps(data, indent=4, sort_keys=True)

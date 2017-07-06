@@ -12,7 +12,7 @@ The sample dataset contains stargazer and language data for Github projects whic
 * `language.csv`: languageID, projectID
 * `stargazer.csv`: stargazerID, projectID, timestamp(starred)
 * `input_definition.json`: input definition in JSON format 
-* `json_input.json`: data in JSON format with repo_id, language_id, stargazer_id defined in input_defintion.json
+* `json_input.json`: data in JSON format with repo_id, language_id, stargazer_id, time_value defined in input_defintion.json
 ## Usage
 
 1. Pilosa server should be running: [Starting Pilosa](https://www.pilosa.com/docs/getting-started/#starting-pilosa)
