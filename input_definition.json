@@ -1,0 +1,118 @@
+{
+    "fields": [
+        {
+            "name": "repo_id", 
+            "primaryKey": true
+        }, 
+        {
+            "actions": [
+                {
+                    "frame": "language", 
+                    "valueDestination": "mapping", 
+                    "valueMap": {
+                        "AMPL": 54, 
+                        "ASP": 30, 
+                        "ApacheConf": 49, 
+                        "Assembly": 6, 
+                        "Awk": 14, 
+                        "Batchfile": 15, 
+                        "C": 7, 
+                        "C#": 27, 
+                        "C++": 10, 
+                        "CSS": 12, 
+                        "Clean": 53, 
+                        "CoffeeScript": 24, 
+                        "Cuda": 31, 
+                        "Dart": 33, 
+                        "Elixir": 56, 
+                        "Emacs Lisp": 35, 
+                        "Fortran": 8, 
+                        "GAP": 60, 
+                        "GDB": 59, 
+                        "Gnuplot": 61, 
+                        "Go": 5, 
+                        "Groff": 44, 
+                        "Groovy": 38, 
+                        "HTML": 9, 
+                        "Java": 21, 
+                        "JavaScript": 13, 
+                        "Jupyter Notebook": 62, 
+                        "Lex": 55, 
+                        "Logos": 11, 
+                        "Lua": 36, 
+                        "M4": 45, 
+                        "Makefile": 4, 
+                        "Nginx": 19, 
+                        "Objective-C": 20, 
+                        "Objective-C++": 48, 
+                        "OpenEdge ABL": 51, 
+                        "PAWN": 25, 
+                        "PHP": 32, 
+                        "PLpgSQL": 42, 
+                        "POV-Ray SDL": 40, 
+                        "Perl": 16, 
+                        "Perl6": 46, 
+                        "PowerShell": 2, 
+                        "Protocol Buffer": 0, 
+                        "Python": 17, 
+                        "QMake": 47, 
+                        "R": 52, 
+                        "Roff": 23, 
+                        "Ruby": 22, 
+                        "SaltStack": 18, 
+                        "Scheme": 34, 
+                        "Shell": 1, 
+                        "Smarty": 28, 
+                        "SourcePawn": 26, 
+                        "Swift": 39, 
+                        "Tcl": 29, 
+                        "TeX": 57, 
+                        "TypeScript": 58, 
+                        "Vim script": 3, 
+                        "VimL": 43, 
+                        "Visual Basic": 50, 
+                        "XSLT": 37, 
+                        "Yacc": 41
+                    }
+                }
+            ], 
+            "name": "language_id"
+        }, 
+        {
+            "actions": [
+                {
+                    "frame": "stargazer", 
+                    "valueDestination": "value-to-row"
+                }
+            ], 
+            "name": "stargazer_id"
+        }, 
+        {
+            "actions": [
+                {
+                    "frame": "stargazer", 
+                    "valueDestination": "set-timestamp"
+                }
+            ], 
+            "name": "time_value"
+        }
+    ], 
+    "frames": [
+        {
+            "name": "language", 
+            "options": {
+                "cacheType": "ranked", 
+                "inverseEnabled": true, 
+                "timeQuantum": "YMD"
+            }
+        }, 
+        {
+            "name": "stargazer", 
+            "options": {
+                "cacheType": "ranked", 
+                "inverseEnabled": true, 
+                "timeQuantum": "YMD"
+            }
+        }
+    ]
+}

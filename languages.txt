@@ -60,3 +60,4 @@ TypeScript
 GDB
 GAP
 Gnuplot
+Jupyter Notebook
