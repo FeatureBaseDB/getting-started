@@ -1,6 +1,6 @@
 # Getting Started
 
-<a href="https://github.com/pilosa"><img src="https://img.shields.io/badge/pilosa-v0.3.1-blue.svg"></a>
+<a href="https://github.com/pilosa"><img src="https://img.shields.io/badge/pilosa-v0.6.0-blue.svg"></a>
 
 This repository contains the dataset and sample code for the [Getting Started](https://www.pilosa.com/docs/getting-started/) section of [Pilosa documentation](https://www.pilosa.com/docs/introduction/).
 
@@ -20,6 +20,8 @@ The sample dataset contains stargazer and language data for Github projects whic
 
 ## Sample Projects
 
+* [Go](https://github.com/pilosa/getting-started/go)
+* [Java](https://github.com/pilosa/getting-started/java)
 * [Python](https://github.com/pilosa/getting-started/python)
 
 ## Generating the Dataset
