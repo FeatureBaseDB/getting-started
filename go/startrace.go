@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	pilosa "github.com/pilosa/go-pilosa"
+	"github.com/pilosa/go-pilosa"
 )
 
 func main() {
@@ -44,11 +44,24 @@ func loadLanguageNames(datasetPath string) ([]string, error) {
 }
 
 func runQueries(client *pilosa.Client, languageNames []string) {
-	repository, stargazer, language := schema()
 	var err error
 	var response *pilosa.QueryResponse
 	var query pilosa.PQLQuery
 	var repositoryIDs []uint64
+
+	// Let's load the schema from the server.
+	schema, err := client.Schema()
+	if err != nil {
+		// Most calls will return an error value.
+		// You should handle them appropriately.
+		// We will just terminate the program in this case.
+		panic(err)
+	}
+
+	// We need to refer to indexes and frames before we can use them in a query.
+	repository, _ := schema.Index("repository", nil)
+	stargazer, _ := repository.Frame("stargazer", nil)
+	language, _ := repository.Frame("language", nil)
 
 	// Which repositories did user 14 star:
 	response, err = client.Query(stargazer.Bitmap(14), nil)
@@ -74,7 +87,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	)
 	response, err = client.Query(query, nil)
 	repositoryIDs = response.Result().Bitmap.Bits
-	fmt.Println("User 14 and 19 starred:")
+	fmt.Println("Both user 14 and 19 starred:")
 	printIDs(repositoryIDs)
 
 	fmt.Println()
@@ -91,9 +104,9 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 
 	fmt.Println()
 
-	// Which repositories were starred by user 14 and 19 and also were written in language 1:
+	// Which repositories were starred by user 14 or 19 and were written in language 1:
 	query = repository.Intersect(
-		repository.Intersect(
+		repository.Union(
 			stargazer.Bitmap(14),
 			stargazer.Bitmap(19),
 		),
@@ -101,7 +114,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	)
 	response, err = client.Query(query, nil)
 	repositoryIDs = response.Result().Bitmap.Bits
-	fmt.Println("User 14 or 19 starred:")
+	fmt.Println("User 14 or 19 starred, written in language 1:")
 	printIDs(repositoryIDs)
 
 	fmt.Println()
@@ -110,25 +123,6 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	_, err = client.Query(stargazer.SetBit(99999, 77777), nil)
 	checkErr(err)
 	fmt.Printf("Set user 99999 as a stargazer for repository 77777\n\n")
-}
-
-func schema() (*pilosa.Index, *pilosa.Frame, *pilosa.Frame) {
-	repository, _ := pilosa.NewIndex("repository", &pilosa.IndexOptions{
-		ColumnLabel: "repo_id",
-	})
-
-	stargazer, _ := repository.Frame("stargazer", &pilosa.FrameOptions{
-		RowLabel:       "stargazer_id",
-		TimeQuantum:    pilosa.TimeQuantumYearMonthDay,
-		InverseEnabled: true,
-	})
-
-	language, _ := repository.Frame("language", &pilosa.FrameOptions{
-		RowLabel:       "language_id",
-		InverseEnabled: true,
-	})
-
-	return repository, stargazer, language
 }
 
 func checkErr(err error) {

@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import sys
 import os
 
@@ -44,7 +46,13 @@ def print_ids(ids):
 
 
 def run_queries(client, language_names):
-    repository, stargazer, language = get_schema()
+    # Let's load the schema from the server.
+    schema = client.schema()
+    
+    # We need to refer to indexes and frames before we can use them in a query.
+    repository = schema.index("repository")
+    stargazer = repository.frame("stargazer")
+    language = repository.frame("language")
 
     # Which repositories did user 14 star:
     repository_ids = client.query(stargazer.bitmap(14)).result.bitmap.bits
@@ -69,7 +77,7 @@ def run_queries(client, language_names):
         stargazer.bitmap(19)
     )
     mutually_starred = client.query(query).result.bitmap.bits
-    print("User 14 and 19 starred:")
+    print("Both user 14 and 19 starred:")
     print_ids(mutually_starred)
 
     print()
@@ -85,16 +93,16 @@ def run_queries(client, language_names):
 
     print()
 
-    # Which repositories were starred by user 14 and 19 and also were written in language 1:
+    # Which repositories were starred by user 14 or 19 and were written in language 1:
     query = repository.intersect(
-        repository.intersect(
+        repository.union(
             stargazer.bitmap(14),
             stargazer.bitmap(19)
         ),
         language.bitmap(1)
     )
     mutually_starred = client.query(query).result.bitmap.bits
-    print("User 14 and 19 starred and in language 1:")
+    print("User 14 or 19 starred, written in language 1:")
     print_ids(mutually_starred)
 
     print()
