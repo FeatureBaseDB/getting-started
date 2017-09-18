@@ -1,0 +1,94 @@
+[
+    {
+        "language_id": "CSS", 
+        "repo_id": 40127179, 
+        "stargazer_id": 19350078, 
+        "time_value": "2017-07-05T08:07"
+    }, 
+    {
+        "language_id": "Protocol Buffer", 
+        "repo_id": 69703885, 
+        "stargazer_id": 175499, 
+        "time_value": "2017-07-01T00:37"
+    }, 
+    {
+        "language_id": "Protocol Buffer", 
+        "repo_id": 54616262, 
+        "stargazer_id": 20075694, 
+        "time_value": "2017-06-10T13:29"
+    }, 
+    {
+        "language_id": "Makefile", 
+        "repo_id": 81382053, 
+        "stargazer_id": 13435194, 
+        "time_value": "2017-05-09T13:34"
+    }, 
+    {
+        "language_id": "Java", 
+        "repo_id": 86457865, 
+        "stargazer_id": 5028504, 
+        "time_value": "2017-06-15T14:08"
+    }, 
+    {
+        "language_id": "Protocol Buffer", 
+        "repo_id": 81125398, 
+        "stargazer_id": 15963480, 
+        "time_value": "2017-06-08T13:20"
+    }, 
+    {
+        "language_id": "Protocol Buffer", 
+        "repo_id": 92058858, 
+        "stargazer_id": 513114, 
+        "time_value": "2017-05-23T22:19"
+    }, 
+    {
+        "language_id": "Makefile", 
+        "repo_id": 94591050, 
+        "stargazer_id": 770790, 
+        "time_value": "2017-06-20T04:28"
+    }, 
+    {
+        "language_id": "Protocol Buffer", 
+        "repo_id": 92607224, 
+        "stargazer_id": 3055345, 
+        "time_value": "2017-06-07T08:43"
+    }, 
+    {
+        "repo_id": 90106646, 
+        "stargazer_id": 513114, 
+        "time_value": "2017-06-07T15:52"
+    }, 
+    {
+        "language_id": "Go", 
+        "repo_id": 91720568, 
+        "stargazer_id": 513114, 
+        "time_value": "2017-05-18T20:40"
+    }, 
+    {
+        "language_id": "Go", 
+        "repo_id": 91473851
+    }, 
+    {
+        "language_id": "Jupyter Notebook", 
+        "repo_id": 84378090
+    }, 
+    {
+        "language_id": "Python", 
+        "repo_id": 95122322
+    }, 
+    {
+        "language_id": "TeX", 
+        "repo_id": 95485167
+    }, 
+    {
+        "language_id": "Ruby", 
+        "repo_id": 73510401
+    }, 
+    {
+        "language_id": "Go", 
+        "repo_id": 72858120
+    }, 
+    {
+        "repo_id": 92274475
+    }
+]
