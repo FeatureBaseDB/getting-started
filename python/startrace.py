@@ -69,7 +69,7 @@ def run_queries(client, language_names):
 
     print()
 
-    # Which repositories were starred by either user 14 or 19:
+    # Which repositories were starred by user 14 or 19:
     query = repository.union(
         stargazer.bitmap(14),
         stargazer.bitmap(19)

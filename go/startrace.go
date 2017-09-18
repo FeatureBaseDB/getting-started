@@ -92,7 +92,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 
 	fmt.Println()
 
-	// Which repositories were starred by either user 14 or 19:
+	// Which repositories were starred by user 14 or 19:
 	query = repository.Union(
 		stargazer.Bitmap(14),
 		stargazer.Bitmap(19),
