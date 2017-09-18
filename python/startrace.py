@@ -6,19 +6,6 @@ import os
 from pilosa import Client, Index, TimeQuantum
 
 
-def get_schema():
-    repository = Index("repository", column_label="repo_id")
-    stargazer = repository.frame("stargazer",
-                                 row_label="stargazer_id",
-                                 time_quantum=TimeQuantum.YEAR_MONTH_DAY,
-                                 inverse_enabled=True)
-    language = repository.frame("language",
-                                row_label="language_id",
-                                inverse_enabled=True)
-
-    return repository, stargazer, language
-
-
 def load_language_names(dataset_path):
     with open(os.path.join(dataset_path, "languages.txt")) as f:
         return [line.strip() for line in f]
