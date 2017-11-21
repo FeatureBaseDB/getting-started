@@ -3,8 +3,6 @@ import com.pilosa.client.PilosaClient;
 import com.pilosa.client.QueryResponse;
 import com.pilosa.client.TimeQuantum;
 import com.pilosa.client.orm.*;
-//import org.apache.logging.log4j.Level;
-//import org.apache.logging.log4j.status.StatusLogger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,9 +17,6 @@ public class StarTrace {
             System.err.printf("Usage: java -jar startrace.jar PATH_TO_DATASET [PILOSA_ADDRESS]\n\n");
             System.exit(1);
         }
-
-        // Turn off no logger configured notification
-//        StatusLogger.getLogger().setLevel(Level.OFF);
 
         String datasetPath = args[0];
         String address = (args.length > 1)? args[1] : ":10101";
