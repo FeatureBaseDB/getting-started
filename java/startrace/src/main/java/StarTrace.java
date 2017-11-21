@@ -3,8 +3,8 @@ import com.pilosa.client.PilosaClient;
 import com.pilosa.client.QueryResponse;
 import com.pilosa.client.TimeQuantum;
 import com.pilosa.client.orm.*;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.status.StatusLogger;
+//import org.apache.logging.log4j.Level;
+//import org.apache.logging.log4j.status.StatusLogger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,7 +21,7 @@ public class StarTrace {
         }
 
         // Turn off no logger configured notification
-        StatusLogger.getLogger().setLevel(Level.OFF);
+//        StatusLogger.getLogger().setLevel(Level.OFF);
 
         String datasetPath = args[0];
         String address = (args.length > 1)? args[1] : ":10101";
@@ -124,20 +124,15 @@ public class StarTrace {
 
     static final class Schema {
         Schema() {
-            IndexOptions indexOptions = IndexOptions.builder()
-                    .setColumnLabel("repo_id")
-                    .build();
-            this.repository = Index.withName("repository", indexOptions);
+            this.repository = Index.withName("repository");
 
             FrameOptions stargazerFrameOptions = FrameOptions.builder()
-                    .setRowLabel("stargazer_id")
                     .setTimeQuantum(TimeQuantum.YEAR_MONTH_DAY)
                     .setInverseEnabled(true)
                     .build();
             this.stargazer = this.repository.frame("stargazer", stargazerFrameOptions);
 
             FrameOptions languageFrameOptions = FrameOptions.builder()
-                    .setRowLabel("language_id")
                     .setInverseEnabled(true)
                     .build();
             this.language = this.repository.frame("language", languageFrameOptions);
