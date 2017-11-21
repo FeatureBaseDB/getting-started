@@ -1,18 +1,17 @@
-import sys
+from __future__ import print_function
+
 import os
+import sys
 
 from pilosa import Client, Index, TimeQuantum
 
 
 def get_schema():
-    repository = Index("repository", column_label="repo_id")
+    repository = Index("repository")
     stargazer = repository.frame("stargazer",
-                                 row_label="stargazer_id",
                                  time_quantum=TimeQuantum.YEAR_MONTH_DAY,
                                  inverse_enabled=True)
-    language = repository.frame("language",
-                                row_label="language_id",
-                                inverse_enabled=True)
+    language = repository.frame("language", inverse_enabled=True)
 
     return repository, stargazer, language
 
