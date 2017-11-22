@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pilosa</groupId>
-    <artifactId>getting-started</artifactId>
-    <version>0.3.2</version>
+    <artifactId>startrace</artifactId>
+    <version>0.5.1</version>
 
     <dependencies>
         <dependency>
             <groupId>com.pilosa</groupId>
             <artifactId>pilosa-client</artifactId>
-            <version>0.3.2</version>
+            <version>0.5.1</version>
         </dependency>
     </dependencies>
 
