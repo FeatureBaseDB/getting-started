@@ -64,7 +64,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	language, _ := repository.Frame("language", nil)
 
 	// Which repositories did user 14 star:
-	response, err = client.Query(stargazer.Bitmap(14), nil)
+	response, err = client.Query(stargazer.Bitmap(14))
 	checkErr(err)
 	repositoryIDs = response.Result().Bitmap.Bits
 	fmt.Println("User 14 starred:")
@@ -73,7 +73,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	fmt.Println()
 
 	// What are the top 5 languages in the sample data:
-	response, err = client.Query(language.TopN(5), nil)
+	response, err = client.Query(language.TopN(5))
 	languages := response.Result().CountItems
 	fmt.Println("Top Languages:")
 	printTopNLanguages(languages, languageNames)
@@ -85,7 +85,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 		stargazer.Bitmap(14),
 		stargazer.Bitmap(19),
 	)
-	response, err = client.Query(query, nil)
+	response, err = client.Query(query)
 	repositoryIDs = response.Result().Bitmap.Bits
 	fmt.Println("Both user 14 and 19 starred:")
 	printIDs(repositoryIDs)
@@ -97,7 +97,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 		stargazer.Bitmap(14),
 		stargazer.Bitmap(19),
 	)
-	response, err = client.Query(query, nil)
+	response, err = client.Query(query)
 	repositoryIDs = response.Result().Bitmap.Bits
 	fmt.Println("User 14 or 19 starred:")
 	printIDs(repositoryIDs)
@@ -112,7 +112,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 		),
 		language.Bitmap(1),
 	)
-	response, err = client.Query(query, nil)
+	response, err = client.Query(query)
 	repositoryIDs = response.Result().Bitmap.Bits
 	fmt.Println("User 14 or 19 starred, written in language 1:")
 	printIDs(repositoryIDs)
@@ -120,7 +120,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	fmt.Println()
 
 	// Set user 99999 as a stargazer for repository 77777:
-	_, err = client.Query(stargazer.SetBit(99999, 77777), nil)
+	_, err = client.Query(stargazer.SetBit(99999, 77777))
 	checkErr(err)
 	fmt.Printf("Set user 99999 as a stargazer for repository 77777\n\n")
 }

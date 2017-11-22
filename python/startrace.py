@@ -1,7 +1,7 @@
 from __future__ import print_function
 
-import sys
 import os
+import sys
 
 from pilosa import Client, Index, TimeQuantum
 
