@@ -4,7 +4,7 @@ This folder contains the sample Star Trace project in Go.
 
 ## Requirements
 
-* Go 1.7 and higher
+* Go 1.8 and higher
 
 ## Usage
 
