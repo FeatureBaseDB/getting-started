@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/pilosa/go-pilosa"
+	pilosa "github.com/pilosa/go-pilosa"
 )
 
 func main() {
@@ -19,9 +19,8 @@ func main() {
 	if len(os.Args) > 2 {
 		address = os.Args[2]
 	}
-	uri, err := pilosa.NewURIFromAddress(address)
+	client, err := pilosa.NewClient(address)
 	checkErr(err)
-	client := pilosa.NewClientWithURI(uri)
 	languageNames, err := loadLanguageNames(datasetPath)
 	checkErr(err)
 	runQueries(client, languageNames)
@@ -58,15 +57,15 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 		panic(err)
 	}
 
-	// We need to refer to indexes and frames before we can use them in a query.
-	repository, _ := schema.Index("repository", nil)
-	stargazer, _ := repository.Frame("stargazer", nil)
-	language, _ := repository.Frame("language", nil)
+	// We need to refer to indexes and fields before we can use them in a query.
+	repository, _ := schema.Index("repository")
+	stargazer, _ := repository.Field("stargazer")
+	language, _ := repository.Field("language")
 
 	// Which repositories did user 14 star:
-	response, err = client.Query(stargazer.Bitmap(14))
+	response, err = client.Query(stargazer.Row(14))
 	checkErr(err)
-	repositoryIDs = response.Result().Bitmap.Bits
+	repositoryIDs = response.Result().Row().Columns
 	fmt.Println("User 14 starred:")
 	printIDs(repositoryIDs)
 
@@ -74,7 +73,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 
 	// What are the top 5 languages in the sample data:
 	response, err = client.Query(language.TopN(5))
-	languages := response.Result().CountItems
+	languages := response.Result().CountItems()
 	fmt.Println("Top Languages:")
 	printTopNLanguages(languages, languageNames)
 
@@ -82,11 +81,11 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 
 	// Which repositories were starred by both user 14 and 19:
 	query = repository.Intersect(
-		stargazer.Bitmap(14),
-		stargazer.Bitmap(19),
+		stargazer.Row(14),
+		stargazer.Row(19),
 	)
 	response, err = client.Query(query)
-	repositoryIDs = response.Result().Bitmap.Bits
+	repositoryIDs = response.Result().Row().Columns
 	fmt.Println("Both user 14 and 19 starred:")
 	printIDs(repositoryIDs)
 
@@ -94,11 +93,11 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 
 	// Which repositories were starred by user 14 or 19:
 	query = repository.Union(
-		stargazer.Bitmap(14),
-		stargazer.Bitmap(19),
+		stargazer.Row(14),
+		stargazer.Row(19),
 	)
 	response, err = client.Query(query)
-	repositoryIDs = response.Result().Bitmap.Bits
+	repositoryIDs = response.Result().Row().Columns
 	fmt.Println("User 14 or 19 starred:")
 	printIDs(repositoryIDs)
 
@@ -107,13 +106,13 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	// Which repositories were starred by user 14 or 19 and were written in language 1:
 	query = repository.Intersect(
 		repository.Union(
-			stargazer.Bitmap(14),
-			stargazer.Bitmap(19),
+			stargazer.Row(14),
+			stargazer.Row(19),
 		),
-		language.Bitmap(1),
+		language.Row(1),
 	)
 	response, err = client.Query(query)
-	repositoryIDs = response.Result().Bitmap.Bits
+	repositoryIDs = response.Result().Row().Columns
 	fmt.Println("User 14 or 19 starred, written in language 1:")
 	printIDs(repositoryIDs)
 
@@ -137,7 +136,7 @@ func printIDs(ids []uint64) {
 	}
 }
 
-func printTopNLanguages(items []*pilosa.CountResultItem, languageNames []string) {
+func printTopNLanguages(items []pilosa.CountResultItem, languageNames []string) {
 	for i, item := range items {
 		fmt.Printf("\t%d. %s (%d stars)\n", i+1, languageNames[item.ID], item.Count)
 	}

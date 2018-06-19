@@ -46,18 +46,18 @@ public class StarTrace {
             throw new RuntimeException(ex);
         }
 
-        // We need to refer to indexes and frames before we can use them in a query.
+        // We need to refer to indexes and fields before we can use them in a query.
         Index repository = schema.index("repository");
-        Frame stargazer = repository.frame("stargazer");
-        Frame language = repository.frame("language");
+        Field stargazer = repository.field("stargazer");
+        Field language = repository.field("language");
 
         QueryResponse response;
         PqlQuery query;
         List<Long> repositoryIDs;
 
         // Which repositories did user 14 star:
-        response = client.query(stargazer.bitmap(14));
-        repositoryIDs = response.getResult().getBitmap().getBits();
+        response = client.query(stargazer.row(14));
+        repositoryIDs = response.getResult().getRow().getColumns();
         System.out.println("User 14 starred:");
         printIDs(repositoryIDs);
 
@@ -73,11 +73,11 @@ public class StarTrace {
 
         // Which repositories were starred by both user 14 and 19:
         query = repository.intersect(
-                stargazer.bitmap(14),
-                stargazer.bitmap(19)
+                stargazer.row(14),
+                stargazer.row(19)
         );
         response = client.query(query);
-        repositoryIDs = response.getResult().getBitmap().getBits();
+        repositoryIDs = response.getResult().getRow().getColumns();
         System.out.println("Both user 14 and 19 starred:");
         printIDs(repositoryIDs);
 
@@ -85,11 +85,11 @@ public class StarTrace {
 
         // Which repositories were starred by user 14 or 19:
         query = repository.union(
-                stargazer.bitmap(14),
-                stargazer.bitmap(19)
+                stargazer.row(14),
+                stargazer.row(19)
         );
         response = client.query(query);
-        repositoryIDs = response.getResult().getBitmap().getBits();
+        repositoryIDs = response.getResult().getRow().getColumns();
         System.out.println("User 14 or 19 starred:");
         printIDs(repositoryIDs);
 
@@ -98,13 +98,13 @@ public class StarTrace {
         // Which repositories were starred by user 14 or 19 and were written in language 1:
         query = repository.intersect(
                 repository.union(
-                        stargazer.bitmap(14),
-                        stargazer.bitmap(19)
+                        stargazer.row(14),
+                        stargazer.row(19)
                 ),
-                language.bitmap(1)
+                language.row(1)
         );
         response = client.query(query);
-        repositoryIDs = response.getResult().getBitmap().getBits();
+        repositoryIDs = response.getResult().getRow().getColumns();
         System.out.println("User 14 or 19 starred, written in language 1:");
         printIDs(repositoryIDs);
 
