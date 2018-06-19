@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	pilosa "github.com/pilosa/go-pilosa"
+	"github.com/pilosa/go-pilosa"
 )
 
 func main() {
