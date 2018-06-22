@@ -11,8 +11,7 @@ The sample dataset contains stargazer and language data for Github projects whic
 * `language.txt`: Language name to languageID mapping. The line number corresponds to the languageID.
 * `language.csv`: languageID, projectID
 * `stargazer.csv`: stargazerID, projectID, timestamp(starred)
-* `input_definition.json`: input definition in JSON format 
-* `json_input.json`: data in JSON format with repo_id, language_id, stargazer_id, time_value defined in input_defintion.json
+
 ## Usage
 
 1. Pilosa server should be running: [Starting Pilosa](https://www.pilosa.com/docs/getting-started/#starting-pilosa)
@@ -26,6 +25,7 @@ The sample dataset contains stargazer and language data for Github projects whic
 * [Python](https://github.com/pilosa/getting-started/tree/master/python)
 
 ## Generating the Dataset
+
 Using a Github token is strongly recommended for avoiding throttling. If you don't already have a token for the [GitHub API](https://developer.github.com/v3/), see [Creating a personal access token for the command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
 A recent version of Python is required. We test the script with 2.7 and 3.5.
@@ -48,14 +48,3 @@ The `fetch.py` script searches Github for a given keyword and creates the datase
 
 Run the script: `python fetch.py KEYWORD`.
 `KEYWORD` is the search term to use for searching repository names.
-
-#### To generate input_defintion and json_input files:
-
-The `build_definition.py` script builds a JSON formatted input-defintion. It uses `language.txt` to map a language string to an id.
-
-Run the script: `python build_definition.py <input_definition.json>`.
-If `input_definition.json` isn't set, print out JSON input-definition.
-
-`build_json_input.py` script searches Github for a given keyword and creates a JSON data set that adheres to `input_definition.json`.
-Run the script: `python build_json_input.py <reository_name>`.
-

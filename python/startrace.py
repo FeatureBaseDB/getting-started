@@ -36,13 +36,13 @@ def run_queries(client, language_names):
     # Let's load the schema from the server.
     schema = client.schema()
     
-    # We need to refer to indexes and frames before we can use them in a query.
+    # We need to refer to indexes and fields before we can use them in a query.
     repository = schema.index("repository")
-    stargazer = repository.frame("stargazer")
-    language = repository.frame("language")
+    stargazer = repository.field("stargazer")
+    language = repository.field("language")
 
     # Which repositories did user 14 star:
-    repository_ids = client.query(stargazer.bitmap(14)).result.bitmap.bits
+    repository_ids = client.query(stargazer.row(14)).result.row.columns
     print("User 14 starred:")
     print_ids(repository_ids)
 
@@ -60,10 +60,10 @@ def run_queries(client, language_names):
 
     # Which repositories were starred by both user 14 and 19:
     query = repository.intersect(
-        stargazer.bitmap(14),
-        stargazer.bitmap(19)
+        stargazer.row(14),
+        stargazer.row(19)
     )
-    mutually_starred = client.query(query).result.bitmap.bits
+    mutually_starred = client.query(query).result.row.columns
     print("Both user 14 and 19 starred:")
     print_ids(mutually_starred)
 
@@ -71,10 +71,10 @@ def run_queries(client, language_names):
 
     # Which repositories were starred by user 14 or 19:
     query = repository.union(
-        stargazer.bitmap(14),
-        stargazer.bitmap(19)
+        stargazer.row(14),
+        stargazer.row(19)
     )
-    either_starred = client.query(query).result.bitmap.bits
+    either_starred = client.query(query).result.row.columns
     print("User 14 or 19 starred:")
     print_ids(either_starred)
 
@@ -83,12 +83,12 @@ def run_queries(client, language_names):
     # Which repositories were starred by user 14 or 19 and were written in language 1:
     query = repository.intersect(
         repository.union(
-            stargazer.bitmap(14),
-            stargazer.bitmap(19)
+            stargazer.row(14),
+            stargazer.row(19)
         ),
-        language.bitmap(1)
+        language.row(1)
     )
-    mutually_starred = client.query(query).result.bitmap.bits
+    mutually_starred = client.query(query).result.row.columns
     print("User 14 or 19 starred, written in language 1:")
     print_ids(mutually_starred)
 
