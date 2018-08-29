@@ -1,6 +1,6 @@
 # Getting Started
 
-<a href="https://github.com/pilosa"><img src="https://img.shields.io/badge/pilosa-v0.8.1-blue.svg"></a>
+<a href="https://github.com/pilosa"><img src="https://img.shields.io/badge/pilosa-v1.0-blue.svg"></a>
 
 This repository contains the dataset and sample code for the [Getting Started](https://www.pilosa.com/docs/getting-started/) section of [Pilosa documentation](https://www.pilosa.com/docs/introduction/).
 

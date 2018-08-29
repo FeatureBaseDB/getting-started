@@ -95,7 +95,7 @@ def run_queries(client, language_names):
     print()
 
     # Set user 99999 as a stargazer for repository 77777:
-    client.query(stargazer.setbit(99999, 77777))
+    client.query(stargazer.set(99999, 77777))
     print("Set user 99999 as a stargazer for repository 77777\n")
 
 if __name__ == "__main__":

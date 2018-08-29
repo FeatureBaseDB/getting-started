@@ -20,4 +20,4 @@ This folder contains the sample Star Trace project in Java.
     ```
 7. Run the created JAR with the dataset path and Pilosa server address:
     ```
-    java -jar startrace/target/getting-started-0.8.0.jar .. :10101
+    java -jar startrace/target/getting-started-1.0.0.jar .. :10101

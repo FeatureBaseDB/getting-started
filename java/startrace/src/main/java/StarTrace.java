@@ -111,7 +111,7 @@ public class StarTrace {
         System.out.println();
 
         // Set user 99999 as a stargazer for repository 77777:
-        client.query(stargazer.setBit(99999, 77777));
+        client.query(stargazer.set(99999, 77777));
         System.out.printf("Set user 99999 as a stargazer for repository 77777\n\n");
     }
 
