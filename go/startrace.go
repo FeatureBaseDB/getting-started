@@ -58,9 +58,9 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	}
 
 	// We need to refer to indexes and fields before we can use them in a query.
-	repository, _ := schema.Index("repository")
-	stargazer, _ := repository.Field("stargazer")
-	language, _ := repository.Field("language")
+	repository := schema.Index("repository")
+	stargazer := repository.Field("stargazer")
+	language := repository.Field("language")
 
 	// Which repositories did user 14 star:
 	response, err = client.Query(stargazer.Row(14))
@@ -119,7 +119,7 @@ func runQueries(client *pilosa.Client, languageNames []string) {
 	fmt.Println()
 
 	// Set user 99999 as a stargazer for repository 77777:
-	_, err = client.Query(stargazer.SetBit(99999, 77777))
+	_, err = client.Query(stargazer.Set(99999, 77777))
 	checkErr(err)
 	fmt.Printf("Set user 99999 as a stargazer for repository 77777\n\n")
 }
