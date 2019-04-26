@@ -14,4 +14,4 @@ sleep 5
 
 # stop Pilosa
 kill -INT $PILOSA_PID
-sleep 5
+wait $PILOSA_PID
