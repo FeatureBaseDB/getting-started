@@ -14,9 +14,22 @@ The sample dataset contains stargazer and language data for Github projects whic
 
 ## Usage
 
+### Docker
+
+Run the Pilosa Docker image with Getting Started data using:
+```
+docker run -it --rm -p 10101:10101 pilosa/getting-started:latest
+```
+
+Continue with [Getting Started: Make Some Queries](https://www.pilosa.com/docs/latest/getting-started/#make-some-queries).
+
+### Without Docker
+
 1. Pilosa server should be running: [Starting Pilosa](https://www.pilosa.com/docs/getting-started/#starting-pilosa)
 2. The appropriate schema should be initialized: [Create the Schema](https://www.pilosa.com/docs/getting-started/#create-the-schema)
 3. Finally, the data can be imported: [Import Some Data](https://www.pilosa.com/docs/getting-started/#import-some-data)
+
+Continue with [Getting Started: Make Some Queries](https://www.pilosa.com/docs/latest/getting-started/#make-some-queries).
 
 ## Sample Projects
 
@@ -41,10 +54,15 @@ Below are the steps to run commands:
 3. Install requirements: `pip install -r requirements.txt`
 4. If you have a Github token, save it as `token` in the root directory of the project.
 
-
 #### To generate csv files:
 
 The `fetch.py` script searches Github for a given keyword and creates the dataset explained in *The Dataset* section.
 
 Run the script: `python fetch.py KEYWORD`.
 `KEYWORD` is the search term to use for searching repository names.
+
+## Creating the Docker Image
+
+```
+make docker VERSION=some-version
+```
