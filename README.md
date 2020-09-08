@@ -8,7 +8,7 @@ This repository contains the dataset and sample code for the [Getting Started](h
 
 The sample dataset contains stargazer and language data for Github projects which were retrieved for the search keyword "Go". See the *Generating the Dataset* section below to create other datasets.
 
-* `language.txt`: Language name to languageID mapping. The line number corresponds to the languageID.
+* `languages.txt`: Language name to languageID mapping. The line number corresponds to the languageID.
 * `language.csv`: languageID, projectID
 * `stargazer.csv`: stargazerID, projectID, timestamp(starred)
 
