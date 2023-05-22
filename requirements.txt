@@ -3,5 +3,5 @@ packaging==16.8
 PyGithub==1.33
 PyJWT==1.4.2
 pyparsing==2.2.0
-requests==2.20.1
+requests==2.31.0
 six==1.10.0
